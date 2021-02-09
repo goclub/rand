@@ -3,10 +3,10 @@ package xrand
 func RunesBySeed(seed []rune, size int) ([]rune, error) {
 	var result []rune
 	for i:=0; i<size; i++ {
-		randIndex, err := randomBig(len(seed)) ; if err != nil {
+		randIndex, err := Int64(int64(len(seed))) ; if err != nil {
       return nil, err
     }
-		result = append(result, seed[randIndex.Int64()])
+		result = append(result, seed[randIndex])
 	}
 	return result, nil
 }

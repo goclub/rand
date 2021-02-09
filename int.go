@@ -5,6 +5,9 @@ import (
 	"math/big"
 )
 
-func randomBig(max int) (random *big.Int, err error) {
-	return rand.Int(rand.Reader, big.NewInt(int64(max)))
+func Int64(max int64) (random int64, err error) {
+	bigInt, err := rand.Int(rand.Reader, big.NewInt(max)) ; if err != nil {
+		return 0, err
+	}
+	return bigInt.Int64(), err
 }
