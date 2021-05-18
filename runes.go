@@ -3,9 +3,9 @@ package xrand
 func RunesBySeed(seed []rune, size int) ([]rune, error) {
 	var result []rune
 	for i:=0; i<size; i++ {
-		randIndex, err := Int64(int64(len(seed))) ; if err != nil {
-      return nil, err
-    }
+		randIndex, err := RangeUint64(0, uint64(len(seed)-1)) ; if err != nil {
+		    return nil, err
+		}
 		result = append(result, seed[randIndex])
 	}
 	return result, nil
