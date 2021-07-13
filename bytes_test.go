@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-func TestRunesBySeed(t *testing.T) {
-	data, err := RunesBySeed([]rune("ab我"), 100)
+func TestBytesBySeed(t *testing.T) {
+	data, err := BytesBySeed([]byte("abc"), 100)
 	if err != nil {
 		log.Print(err)
 		t.Fail()
@@ -27,10 +27,9 @@ func TestRunesBySeed(t *testing.T) {
 		log.Print("b")
 		t.Fail()
 	}
-	if count["我"] == 0 {
-		log.Print("我")
+	if count["c"] == 0 {
+		log.Print("c")
 		t.Fail()
 	}
 	log.Print(string(data))
-
 }
