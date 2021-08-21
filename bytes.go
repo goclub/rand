@@ -10,3 +10,14 @@ func BytesBySeed(seed []byte, size int) ([]byte, error) {
 	}
 	return result, nil
 }
+
+type Seed struct {}
+func (Seed) Alphabet() []byte {
+	return []byte("abcdefghijklmnopqrstuvwxyz")
+}
+func (Seed) Digit() []byte {
+	return []byte("0123456789")
+}
+func (Seed) AlphabetDigit() []byte {
+	return []byte("abcdefghijklmnopqrstuvwxyz0123456789")
+}
