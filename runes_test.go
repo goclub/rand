@@ -6,11 +6,7 @@ import (
 )
 
 func TestRunesBySeed(t *testing.T) {
-	data, err := RunesBySeed([]rune("ab我"), 100)
-	if err != nil {
-		log.Print(err)
-		t.Fail()
-	}
+	data := RunesBySeed([]rune("ab我"), 100)
 	count := map[string]int{}
 	if len(data) != 100 {
 		log.Print("len error")
@@ -31,6 +27,4 @@ func TestRunesBySeed(t *testing.T) {
 		log.Print("我")
 		t.Fail()
 	}
-	log.Print(string(data))
-
 }

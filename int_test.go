@@ -2,20 +2,22 @@ package xrand
 
 import (
 	"github.com/stretchr/testify/assert"
+	"log"
+	"math"
 	"reflect"
 	"testing"
 )
 
 func TestRangeUint64(t *testing.T) {
-	random, err := RangeUint64(0, 0)
-	assert.NoError(t, err)
+	random := RangeUint64(0, 0)
 	assert.Equal(t, random, uint64(0))
+	// 测试最大值不会panic
+	log.Print(RangeUint64(0, math.MaxUint64))
 	var testRange = func(min uint64, max uint64) {
 		result := map[uint64]uint64{}
 
 		for i := 0; i < 100; i++ {
-			random, err := RangeUint64(min, max)
-			assert.NoError(t, err)
+			random := RangeUint64(min, max)
 			result[random]++
 		}
 		keys := reflect.ValueOf(result).MapKeys()
@@ -40,15 +42,15 @@ func TestRangeUint64(t *testing.T) {
 }
 
 func TestRangeInt64(t *testing.T) {
-	random, err := RangeInt64(0, 0)
-	assert.NoError(t, err)
+	random := RangeInt64(0, 0)
+	// 测试最小最大值不会panic
+	log.Print(RangeInt64(math.MinInt64, math.MaxInt64))
 	assert.Equal(t, random, int64(0))
 	var testRange = func(min int64, max int64) {
 		result := map[int64]int64{}
 
 		for i := 0; i < 100; i++ {
-			random, err := RangeInt64(min, max)
-			assert.NoError(t, err)
+			random := RangeInt64(min, max)
 			result[random]++
 		}
 		keys := reflect.ValueOf(result).MapKeys()

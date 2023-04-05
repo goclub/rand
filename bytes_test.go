@@ -6,11 +6,7 @@ import (
 )
 
 func TestBytesBySeed(t *testing.T) {
-	data, err := BytesBySeed([]byte("abc"), 100)
-	if err != nil {
-		log.Print(err)
-		t.Fail()
-	}
+	data := BytesBySeed([]byte("abc"), 100)
 	count := map[string]int{}
 	if len(data) != 100 {
 		log.Print("len error")
@@ -31,5 +27,4 @@ func TestBytesBySeed(t *testing.T) {
 		log.Print("c")
 		t.Fail()
 	}
-	log.Print(string(data))
 }
